@@ -37,6 +37,7 @@ function setup() {
 
   radius.position((width/2)-50,(height/2)-40);
   heights.position((width/2)-50,(height/2)-10);
+  slength.position((width/2)+150,(height/2)-10);
   set.position((width/2)-50,(height/2)+20);
   reset.position((width/2)-50,(height/2)+20);
   selectShape.position((width/2)-50,(height/2)-40);
@@ -225,6 +226,7 @@ function draw() {
    
     text("radius",(width/2)-100,(height/2)-20);
     text("height",(width/2)-100,(height/2)+10);
+    text("or",(width/2)+115,(height/2)+5);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -300,6 +302,142 @@ function draw() {
       heights.value(0);
     });
   }
+
+  if(gameState==="SphereT.S.A") {
+    radius.show();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("radius",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(radius.value());
+      gameState = "sta";
+    });
+  }
+
+  if(gameState==="sta"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    sphereTSA(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "SphereT.S.A";
+      radius.value(0);
+    });
+  }
+
+  if(gameState==="SphereC.S.A") {
+    radius.show();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("radius",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(radius.value());
+      gameState = "sca";
+    });
+  }
+
+  if(gameState==="sca"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    sphereCSA(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "SphereC.S.A";
+      radius.value(0);
+    });
+  }
+
+  if(gameState==="SphereVolume") {
+    radius.show();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("radius",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(radius.value());
+      gameState = "sva";
+    });
+  }
+
+  if(gameState==="sva"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    sphereVol(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "SphereVolume";
+      radius.value(0);
+    });
+  }
+
+  if(gameState==="HemisphereVolume") {
+    radius.show();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("radius",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(radius.value());
+      gameState = "hva";
+    });
+  }
+
+  if(gameState==="hva"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    hemispereVol(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "HemisphereVolume";
+      radius.value(0);
+    });
+  }
 }
 
 function cylinderVol(r,h) {
@@ -349,3 +487,171 @@ function coneTSAA(r,h) {
   fill(255);
   text(22/7*r*(r+(sqrt((h*h+r*r)))),(width/2)-50,height/2);
 }
+
+function sphereCSA(r) {
+  noStroke();
+  fill(255);
+  text(4*22/7*r*r,(width/2)-50,height/2);
+}
+
+function sphereTSA(r) {
+  noStroke();
+  fill(255);
+  text(4*22/7*r*r,(width/2)-50,height/2);
+}
+
+function sphereVol(r) {
+  noStroke();
+  fill(255);
+  text(4/3*22/7*r*r*r,(width/2)-50,height/2);
+}
+
+function hemispereTSA(r) {
+  noStroke();
+  fill(255);
+  text(3*22/7*r*r,(width/2)-50,height/2);
+}
+
+function hemispereCSA(r) {
+  noStroke();
+  fill(255);
+  text(2*22/7*r*r,(width/2)-50,height/2);
+}
+
+function hemispereVol(r) {
+  noStroke();
+  fill(255);
+  text(2/3*22/7*r*r*r,(width/2)-50,height/2);
+}
+
+/*function cube() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function cube() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function cube() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function cuboid() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function cuboid() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function cuboid() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function square() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function square() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function rectangle() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function rectangle() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function circle() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function circle() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function rhombus() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function rhombus() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function trepazium() {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function trepazium(p1,p2) {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function parallelogram(l,w) {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function parallelogram(b,h) {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function triangle(s) {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function triangle(b,h) {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function semicircle(r) {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}
+
+function semicircle(r) {
+  noStroke();
+  fill(255);
+  text(,(width/2)-50,height/2);
+}*/
