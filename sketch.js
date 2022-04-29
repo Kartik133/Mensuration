@@ -35,12 +35,13 @@ function setup() {
   measurement.option("Volume");
   
 
-  radius.position((width/2)-50,(height/2)-40);
+  radius.position((width/2)-50,(height/2)-10);
   lengths.position((width/2)-50,(height/2)-40);
-  heights.position((width/2)-50,(height/2)-10);
-  slength.position((width/2)+150,(height/2)-10);
-  set.position((width/2)-50,(height/2)+20);
-  reset.position((width/2)-50,(height/2)+20);
+  widths.position((width/2)-50,(height/2)-10);
+  heights.position((width/2)-50,(height/2)+20);
+  slength.position((width/2)+150,(height/2)+20);
+  set.position((width/2)-50,(height/2)+50);
+  reset.position((width/2)-50,(height/2)+50);
   selectShape.position((width/2)-50,(height/2)-40);
   measurement.position((width/2)-50,(height/2)-10);
 }
@@ -225,9 +226,9 @@ function draw() {
     set.show();
     reset.hide();
    
-    text("radius",(width/2)-100,(height/2)-20);
-    text("height",(width/2)-100,(height/2)+10);
-    text("or",(width/2)+115,(height/2)+5);
+    text("radius",(width/2)-100,(height/2)+10);
+    text("height",(width/2)-100,(height/2)+40);
+    text("or",(width/2)+115,(height/2)+35);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -609,6 +610,126 @@ function draw() {
       lengths.value(0);
     });
   }
+
+  if(gameState==="CuboidVolume") {
+    radius.hide();
+    heights.show();
+    widths.show();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("length",(width/2)-100,(height/2)-20);
+    text("width",(width/2)-100,(height/2)+10);
+    text("height",(width/2)-100,(height/2)+40);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      y = int(widths.value());
+      z = int(heights.value());
+      gameState = "cubva";
+    });
+  }
+
+  if(gameState==="cubva"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    cuboidVol(x,y,z);
+    
+    reset.mouseReleased(()=>{
+      gameState = "CuboidVolume";
+      lengths.value(0);
+      widths.value(0);
+      heights.value(0);
+    });
+  }
+
+  if(gameState==="CuboidC.S.A") {
+    radius.hide();
+    heights.show();
+    widths.show();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("length",(width/2)-100,(height/2)-20);
+    text("width",(width/2)-100,(height/2)+10);
+    text("height",(width/2)-100,(height/2)+40);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      y = int(widths.value());
+      z = int(heights.value());
+      gameState = "cubca";
+    });
+  }
+
+  if(gameState==="cubca"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    cuboidCSA(x,y,z);
+    
+    reset.mouseReleased(()=>{
+      gameState = "CuboidC.S.A";
+      lengths.value(0);
+      widths.value(0);
+      heights.value(0);
+    });
+  }
+
+  if(gameState==="CuboidT.S.A") {
+    radius.hide();
+    heights.show();
+    widths.show();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("length",(width/2)-100,(height/2)-20);
+    text("width",(width/2)-100,(height/2)+10);
+    text("height",(width/2)-100,(height/2)+40);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      y = int(widths.value());
+      z = int(heights.value());
+      gameState = "cubta";
+    });
+  }
+
+  if(gameState==="cubta"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    cuboidTSA(x,y,z);
+    
+    reset.mouseReleased(()=>{
+      gameState = "CuboidT.S.A";
+      lengths.value(0);
+      widths.value(0);
+      heights.value(0);
+    });
+  }
 }
 
 function cylinderVol(r,h) {
@@ -713,25 +834,25 @@ function cubeVol(s) {
   text(s*s*s,(width/2)-50,height/2);
 }
 
-/*function cuboid() {
+function cuboidTSA(l,b,h) {
   noStroke();
   fill(255);
-  text(,(width/2)-50,height/2);
+  text(2*((l*b)+(l*h)+(b*h)),(width/2)-50,height/2);
 }
 
-function cuboid() {
+function cuboidCSA(l,b,h) {
   noStroke();
   fill(255);
-  text(,(width/2)-50,height/2);
+  text(2*h*(b+l),(width/2)-50,height/2);
 }
 
-function cuboid() {
+function cuboidVol(l,b,h) {
   noStroke();
   fill(255);
-  text(,(width/2)-50,height/2);
+  text(l*b*h,(width/2)-50,height/2);
 }
 
-function square() {
+/*function square() {
   noStroke();
   fill(255);
   text(,(width/2)-50,height/2);
