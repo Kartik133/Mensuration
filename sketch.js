@@ -36,6 +36,7 @@ function setup() {
   
 
   radius.position((width/2)-50,(height/2)-40);
+  lengths.position((width/2)-50,(height/2)-40);
   heights.position((width/2)-50,(height/2)-10);
   slength.position((width/2)+150,(height/2)-10);
   set.position((width/2)-50,(height/2)+20);
@@ -438,6 +439,176 @@ function draw() {
       radius.value(0);
     });
   }
+
+  if(gameState==="HemisphereT.S.A") {
+    radius.show();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("radius",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(radius.value());
+      gameState = "hta";
+    });
+  }
+
+  if(gameState==="hta"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    hemispereTSA(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "HemisphereT.S.A";
+      radius.value(0);
+    });
+  }
+
+  if(gameState==="HemisphereC.S.A") {
+    radius.show();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("radius",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(radius.value());
+      gameState = "hca";
+    });
+  }
+
+  if(gameState==="hca"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    hemispereCSA(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "HemisphereC.S.A";
+      radius.value(0);
+    });
+  }
+
+  if(gameState==="CubeC.S.A") {
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("side",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      gameState = "cuca";
+    });
+  }
+
+  if(gameState==="cuca"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    cubeCSA(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "CubeC.S.A";
+      lengths.value(0);
+    });
+  }
+
+  if(gameState==="CubeT.S.A") {
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("side",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      gameState = "cuta";
+    });
+  }
+
+  if(gameState==="cuta"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    cubeTSA(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "CubeT.S.A";
+      lengths.value(0);
+    });
+  }
+
+  if(gameState==="CubeVolume") {
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("side",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      gameState = "cuva";
+    });
+  }
+
+  if(gameState==="cuva"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    cubeVol(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "CubeVolume";
+      lengths.value(0);
+    });
+  }
 }
 
 function cylinderVol(r,h) {
@@ -524,25 +695,25 @@ function hemispereVol(r) {
   text(2/3*22/7*r*r*r,(width/2)-50,height/2);
 }
 
-/*function cube() {
+function cubeTSA(s) {
   noStroke();
   fill(255);
-  text(,(width/2)-50,height/2);
+  text(6*s*s,(width/2)-50,height/2);
 }
 
-function cube() {
+function cubeCSA(s) {
   noStroke();
   fill(255);
-  text(,(width/2)-50,height/2);
+  text(4*s*s,(width/2)-50,height/2);
 }
 
-function cube() {
+function cubeVol(s) {
   noStroke();
   fill(255);
-  text(,(width/2)-50,height/2);
+  text(s*s*s,(width/2)-50,height/2);
 }
 
-function cuboid() {
+/*function cuboid() {
   noStroke();
   fill(255);
   text(,(width/2)-50,height/2);
