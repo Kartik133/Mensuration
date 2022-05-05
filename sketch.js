@@ -11,9 +11,9 @@ function setup() {
   set = createButton("set");
   reset = createButton("reset");
   selectShape = createSelect();
-  selectShape.option("None");
+  selectShape.option("Select");
   selectShape.option("Square");
-  selectShape.option("Recangle");
+  selectShape.option("Rectangle");
   selectShape.option("Triangle");
   selectShape.option("Circle");
   selectShape.option("Semicircle");
@@ -27,8 +27,9 @@ function setup() {
   selectShape.option("Sphere");
   selectShape.option("Hemisphere");
   measurement = createSelect();
-  measurement.option("None");
-  measurement.option("Perimeter");
+  measurement.option("Select");
+  measurement.option("Perimeter");  
+  measurement.option("Circumference");
   measurement.option("Area");
   measurement.option("T.S.A");
   measurement.option("C.S.A");
@@ -67,6 +68,7 @@ function draw() {
   }else {
     selectShape.hide();
     measurement.hide();
+    set.hide();
    }
 
   if(gameState==="CylinderVolume") {
@@ -78,8 +80,8 @@ function draw() {
     slength.hide();
     reset.hide();
    
-    text("radius",(width/2)-100,(height/2)-20);
-    text("height",(width/2)-100,(height/2)+10);
+    text("radius",(width/2)-100,(height/2)+10);
+    text("height",(width/2)-100,(height/2)+40);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -115,8 +117,8 @@ function draw() {
     set.show();
     reset.hide();
    
-    text("radius",(width/2)-100,(height/2)-20);
-    text("height",(width/2)-100,(height/2)+10);
+    text("radius",(width/2)-100,(height/2)+10);
+    text("height",(width/2)-100,(height/2)+40);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -152,8 +154,8 @@ function draw() {
     slength.hide();
     reset.hide();
 
-    text("radius",(width/2)-100,(height/2)-20);
-    text("height",(width/2)-100,(height/2)+10);
+    text("radius",(width/2)-100,(height/2)+10);
+    text("height",(width/2)-100,(height/2)+40);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -189,8 +191,8 @@ function draw() {
     slength.hide();
     reset.hide();
    
-    text("radius",(width/2)-100,(height/2)-20);
-    text("height",(width/2)-100,(height/2)+10);
+    text("radius",(width/2)-100,(height/2)+10);
+    text("height",(width/2)-100,(height/2)+40);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -271,8 +273,8 @@ function draw() {
     set.show();
     reset.hide();
 
-    text("radius",(width/2)-100,(height/2)-20);
-    text("height",(width/2)-100,(height/2)+10);
+    text("radius",(width/2)-100,(height/2)+10);
+    text("height",(width/2)-100,(height/2)+40);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -314,7 +316,7 @@ function draw() {
     set.show();
     reset.hide();
 
-    text("radius",(width/2)-100,(height/2)-20);
+    text("radius",(width/2)-100,(height/2)+10);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -348,7 +350,7 @@ function draw() {
     set.show();
     reset.hide();
 
-    text("radius",(width/2)-100,(height/2)-20);
+    text("radius",(width/2)-100,(height/2)+10);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -382,7 +384,7 @@ function draw() {
     set.show();
     reset.hide();
 
-    text("radius",(width/2)-100,(height/2)-20);
+    text("radius",(width/2)-100,(height/2)+10);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -416,7 +418,7 @@ function draw() {
     set.show();
     reset.hide();
 
-    text("radius",(width/2)-100,(height/2)-20);
+    text("radius",(width/2)-100,(height/2)+10);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -450,7 +452,7 @@ function draw() {
     set.show();
     reset.hide();
 
-    text("radius",(width/2)-100,(height/2)-20);
+    text("radius",(width/2)-100,(height/2)+10);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -484,7 +486,7 @@ function draw() {
     set.show();
     reset.hide();
 
-    text("radius",(width/2)-100,(height/2)-20);
+    text("radius",(width/2)-100,(height/2)+10);
 
     set.mouseReleased(()=>{
       x = int(radius.value());
@@ -730,6 +732,290 @@ function draw() {
       heights.value(0);
     });
   }
+
+  if(gameState==="SquarePerimeter") {
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("length",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      gameState = "sqpa";
+    });
+  }
+
+  if(gameState==="sqpa"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    squarePerimeter(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "SquarePerimeter";
+      lengths.value(0);
+    });
+  }
+
+  if(gameState==="SquareArea") {
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("length",(width/2)-100,(height/2)-20);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      gameState = "sqaa";
+    });
+  }
+
+  if(gameState==="sqaa"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    squareArea(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "SquareArea";
+      lengths.value(0);
+    });
+  }
+
+  if(gameState==="RectanglePerimeter") {
+    radius.hide();
+    heights.hide();
+    widths.show();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("length",(width/2)-100,(height/2)-20);
+    text("width",(width/2)-100,(height/2)+10);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      y = int(widths.value());
+      gameState = "rpa";
+    });
+  }
+
+  if(gameState==="rpa"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    rectanglePerimeter(x,y);
+    
+    reset.mouseReleased(()=>{
+      gameState = "RectanglePerimeter";
+      lengths.value(0);
+      widths.value(0);
+    });
+  }
+
+  if(gameState==="RectangleArea") {
+    radius.hide();
+    heights.hide();
+    widths.show();
+    lengths.show();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("length",(width/2)-100,(height/2)-20);
+    text("width",(width/2)-100,(height/2)+10);
+
+    set.mouseReleased(()=>{
+      x = int(lengths.value());
+      y = int(widths.value());
+      gameState = "raa";
+    });
+  }
+
+  if(gameState==="raa"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    rectangleArea(x,y);
+    
+    reset.mouseReleased(()=>{
+      gameState = "RectangleArea";
+      lengths.value(0);
+      widths.value(0);
+    });
+  }
+
+  if(gameState==="CircleCircumference") {
+    radius.show();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("radius",(width/2)-100,(height/2)+10);
+
+    set.mouseReleased(()=>{
+      x = int(radius.value());
+      gameState = "cica";
+    });
+  }
+
+  if(gameState==="cica"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    circleCircumference(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "CircleCircumference";
+      radius.value(0);
+    });
+  }
+
+  if(gameState==="CircleArea") {
+    radius.show();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("radius",(width/2)-100,(height/2)+10);
+
+    set.mouseReleased(()=>{
+      x = int(radius.value());
+      gameState = "ciaa";
+    });
+  }
+
+  if(gameState==="ciaa"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    circleArea(x);
+    
+    reset.mouseReleased(()=>{
+      gameState = "CircleArea";
+      radius.value(0);
+    });
+  }
+
+  if(gameState==="ParallelogramPerimeter") {
+    radius.hide();
+    heights.show();
+    widths.show();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("height",(width/2)-100,(height/2)+40);
+    text("base",(width/2)-100,(height/2)+10);
+
+    set.mouseReleased(()=>{
+      x = int(widths.value());
+      y = int(heights.value());
+      gameState = "ppa";
+    });
+  }
+
+  if(gameState==="ppa"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    parallelogramPerimeter(x,y);
+    
+    reset.mouseReleased(()=>{
+      gameState = "ParallelogramPerimeter";
+      heights.value(0);
+      widths.value(0);
+    });
+  }
+
+  if(gameState==="ParallelogramArea") {
+    radius.hide();
+    heights.show();
+    widths.show();
+    lengths.hide();
+    slength.hide();
+    set.show();
+    reset.hide();
+
+    text("height",(width/2)-100,(height/2)+40);
+    text("base",(width/2)-100,(height/2)+10);
+
+    set.mouseReleased(()=>{
+      x = int(widths.value());
+      y = int(heights.value());
+      gameState = "paa";
+    });
+  }
+
+  if(gameState==="paa"){
+    radius.hide();
+    heights.hide();
+    widths.hide();
+    lengths.hide();
+    slength.hide();
+    set.hide();
+    reset.show();
+
+    parallelogramArea(x,y);
+    
+    reset.mouseReleased(()=>{
+      gameState = "ParallelogramArea";
+      heights.value(0);
+      widths.value(0);
+    });
+  }
 }
 
 function cylinderVol(r,h) {
@@ -852,55 +1138,55 @@ function cuboidVol(l,b,h) {
   text(l*b*h,(width/2)-50,height/2);
 }
 
-/*function square() {
+function squarePerimeter(s) {
+  noStroke();
+  fill(255);
+  text(4*s,(width/2)-50,height/2);
+}
+
+function squareArea(s) {
+  noStroke();
+  fill(255);
+  text(s*s,(width/2)-50,height/2);
+}
+
+function rectanglePerimeter(l,b) {
+  noStroke();
+  fill(255);
+  text(2*(l+b),(width/2)-50,height/2);
+}
+
+function rectangleArea(l,b) {
+  noStroke();
+  fill(255);
+  text(l*b,(width/2)-50,height/2);
+}
+
+function circleCircumference(r) {
+  noStroke();
+  fill(255);
+  text(2*22/7*r,(width/2)-50,height/2);
+}
+
+function circleArea(r) {
+  noStroke();
+  fill(255);
+  text(22/7*r*r,(width/2)-50,height/2);
+}
+
+/*function rhombusPerimeter() {
   noStroke();
   fill(255);
   text(,(width/2)-50,height/2);
 }
 
-function square() {
+function rhombusArea() {
   noStroke();
   fill(255);
   text(,(width/2)-50,height/2);
-}
+}*/
 
-function rectangle() {
-  noStroke();
-  fill(255);
-  text(,(width/2)-50,height/2);
-}
-
-function rectangle() {
-  noStroke();
-  fill(255);
-  text(,(width/2)-50,height/2);
-}
-
-function circle() {
-  noStroke();
-  fill(255);
-  text(,(width/2)-50,height/2);
-}
-
-function circle() {
-  noStroke();
-  fill(255);
-  text(,(width/2)-50,height/2);
-}
-
-function rhombus() {
-  noStroke();
-  fill(255);
-  text(,(width/2)-50,height/2);
-}
-
-function rhombus() {
-  noStroke();
-  fill(255);
-  text(,(width/2)-50,height/2);
-}
-
-function trepazium() {
+/*function trepazium() {
   noStroke();
   fill(255);
   text(,(width/2)-50,height/2);
@@ -910,21 +1196,21 @@ function trepazium(p1,p2) {
   noStroke();
   fill(255);
   text(,(width/2)-50,height/2);
-}
+}*/
 
-function parallelogram(l,w) {
+function parallelogramPerimeter(b,h) {
   noStroke();
   fill(255);
-  text(,(width/2)-50,height/2);
+  text(2*(b+h),(width/2)-50,height/2);
 }
 
-function parallelogram(b,h) {
+function parallelogramArea(b,h) {
   noStroke();
   fill(255);
-  text(,(width/2)-50,height/2);
+  text(b*h,(width/2)-50,height/2);
 }
 
-function triangle(s) {
+/*function triangle(s) {
   noStroke();
   fill(255);
   text(,(width/2)-50,height/2);
